@@ -1,8 +1,12 @@
-# Lista 03 | Estruturas de Dados II
+# 📚 Lista 03 | Estruturas de Dados II
+
+![C++20](https://img.shields.io/badge/C%2B%2B-20-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
+![CMake](https://img.shields.io/badge/CMake-4.2%2B-064F8C?style=for-the-badge&logo=cmake&logoColor=white)
+![Status](https://img.shields.io/badge/status-acad%C3%AAmico-2E7D32?style=for-the-badge)
 
 Implementações em C++20 de algoritmos de ordenação, com foco em comparações, trocas e inversões.
 
-## Conteúdo
+## 🧭 Conteúdo
 
 | Arquivo | Algoritmo | Objetivo |
 | --- | --- | --- |
@@ -13,7 +17,7 @@ Implementações em C++20 de algoritmos de ordenação, com foco em comparaçõe
 | `src/Exer05_InsertionInversions.cpp` | Insertion Sort | Contar inversões do vetor. |
 | `main.cpp` | Selection Sort | Exemplo de execução com vetor fixo. |
 
-## Desempenho
+## ⚡ Desempenho
 
 Considere `n` como o número de elementos.
 
@@ -32,9 +36,9 @@ Considere `n` como o número de elementos.
 
 Para grandes volumes de dados, prefira algoritmos `O(n log n)`, como Merge Sort ou Heap Sort.
 
-## Entrada e saída
+## 🔄 Entrada e saída
 
-### Exercícios 3 e 4
+### 📥 Exercícios 3 e 4
 
 Entrada:
 
@@ -45,7 +49,7 @@ elementos do vetor
 
 Saída: vetor ordenado e número de comparações. O parâmetro `k` é lido, mas não é utilizado pela implementação atual.
 
-### Exercício 5
+### 🔢 Exercício 5
 
 Entrada:
 
@@ -63,7 +67,7 @@ Entrada: 5 4 3 2 1
 Saída: 10
 ```
 
-## Compilação
+## 🛠️ Compilação
 
 Com `g++` e C++20:
 
@@ -90,7 +94,7 @@ cmake --build cmake-build-debug
 
 > O `CMakeLists.txt` atual associa dois arquivos com `main` ao alvo `ex01-bubbleSorting`. Se ocorrer erro de múltipla definição de `main`, compile os exercícios individualmente ou configure um executável para cada arquivo.
 
-## Requisitos
+## ✅ Requisitos
 
 - Compilador com suporte a C++20.
 - CMake 4.2 ou superior, opcional.
