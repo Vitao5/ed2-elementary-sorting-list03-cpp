@@ -1,48 +1,45 @@
 #include <iostream>
 #include <vector>
-#include <utility>
 
 using namespace std;
 
-
 #define IOFAST() ios_base::sync_with_stdio(0); cin.tie(0);
+
+bool deveTrocar(int a, int b) {
+    bool aPar = a % 2 == 0;
+    bool bPar = b % 2 == 0;
+
+    if (aPar && !bPar) return false;
+    if (!aPar && bPar) return true;
+    if (aPar && bPar) return a > b;
+    return a < b;
+}
 
 int main() {
     IOFAST();
 
-    int n, k;
-    if (!(cin >> n >> k)) return 0;
+    int n;
+    cin >> n;
 
     vector<int> vet(n);
     for (int i = 0; i < n; i++) {
         cin >> vet[i];
     }
 
-    int comparacoes = 0;
-
-    for (int i = 1; i < n; i++) {
-        int chave = vet[i];
-        int j = i - 1;
-
-        while (j >= 0) {
-            comparacoes++;
-
-            if (vet[j] > chave) {
-                vet[j + 1] = vet[j];
-                j--;
-            } else {
-                break;
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (deveTrocar(vet[j], vet[j + 1])) {
+                int temp = vet[j];
+                vet[j] = vet[j + 1];
+                vet[j + 1] = temp;
             }
         }
-        vet[j + 1] = chave;
     }
 
     for (int i = 0; i < n; i++) {
         cout << vet[i] << (i == n - 1 ? "" : " ");
     }
     cout << "\n";
-
-    cout << comparacoes << "\n";
 
     return 0;
 }
