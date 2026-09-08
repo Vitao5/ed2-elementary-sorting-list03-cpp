@@ -1,36 +1,28 @@
 #include <iostream>
 #include <vector>
-
 using namespace std;
-
-#define IOFAST() ios_base::sync_with_stdio(0); cin.tie(0);
-
-int main() {
-    IOFAST();
-
-    int n;
-    cin >> n;
-
-    vector<int> vet(n);
-    for (int i = 0; i < n; i++) {
-        cin >> vet[i];
-    }
-
-    long long inversoes = 0;
-
-    for (int i = 1; i < n; i++) {
-        int chave = vet[i];
-        int j = i - 1;
-
-        while (j >= 0 && vet[j] > chave) {
-            vet[j + 1] = vet[j];
-            inversoes++;
-            j--;
+class Solution {
+public:
+    long long insertionInversions(vector<int> nums) {
+        long long inversoes = 0;
+        int n = nums.size();
+        for (int i = 1; i < n; i++) {
+            int chave = nums[i];
+            int j = i - 1;
+            while (j >= 0 && nums[j] > chave) {
+                nums[j + 1] = nums[j];
+                inversoes++;
+                j--;
+            }
+            nums[j + 1] = chave;
         }
-        vet[j + 1] = chave;
+        return inversoes;
     }
-
-    cout << inversoes << "\n";
-
+};
+int main() {
+    Solution sol;
+    vector<int> nums = {2, 4, 1, 3, 5};
+    long long resultado = sol.insertionInversions(nums);
+    cout << resultado << "\n";
     return 0;
 }
