@@ -1,44 +1,35 @@
 #include <iostream>
 #include <vector>
-
 using namespace std;
-
-#define IOFAST() ios_base::sync_with_stdio(0); cin.tie(0);
-
-int main() {
-    IOFAST();
-
-    int n, k;
-    cin >> n >> k;
-
-    vector<int> vet(n);
-    for (int i = 0; i < n; i++) {
-        cin >> vet[i];
-    }
-
-    long long comparacoes = 0;
-
-    for (int i = 1; i < n; i++) {
-        int chave = vet[i];
-        int j = i - 1;
-
-        while (j >= 0) {
-            comparacoes++;
-            if (vet[j] > chave) {
-                vet[j + 1] = vet[j];
-                j--;
-            } else {
-                break;
+class Solution {
+public:
+    pair<vector<int>, long long> insertionSortKSorted(vector<int> nums) {
+        long long comparacoes = 0;
+        int n = nums.size();
+        for (int i = 1; i < n; i++) {
+            int chave = nums[i];
+            int j = i - 1;
+            while (j >= 0) {
+                comparacoes++;
+                if (nums[j] > chave) {
+                    nums[j + 1] = nums[j];
+                    j--;
+                } else {
+                    break;
+                }
             }
+            nums[j + 1] = chave;
         }
-        vet[j + 1] = chave;
+        return {nums, comparacoes};
     }
-
-    for (int i = 0; i < n; i++) {
-        cout << vet[i] << (i == n - 1 ? "" : " ");
+};
+int main() {
+    Solution sol;
+    vector<int> nums = {3, 2, 1, 5, 4, 6};
+    pair<vector<int>, long long> resultado = sol.insertionSortKSorted(nums);
+    for (int i = 0; i < resultado.first.size(); i++) {
+        cout << resultado.first[i] << (i == resultado.first.size() - 1 ? "" : " ");
     }
-    cout << "\n";
-    cout << comparacoes << "\n";
-
+    cout << "\n" << resultado.second << "\n";
     return 0;
 }
