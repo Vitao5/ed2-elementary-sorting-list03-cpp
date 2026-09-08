@@ -1,9 +1,7 @@
 #include <iostream>
 #include <vector>
-#include <utility>
 
 using namespace std;
-
 
 #define IOFAST() ios_base::sync_with_stdio(0); cin.tie(0);
 
@@ -11,7 +9,7 @@ int main() {
     IOFAST();
 
     int n;
-    if (!(cin >> n)) return 0;
+    cin >> n;
 
     vector<int> vet(n);
     for (int i = 0; i < n; i++) {
