@@ -1,53 +1,44 @@
 #include <iostream>
 #include <vector>
-#include <utility>
 
 using namespace std;
 
-using ll = long long;
-
 #define IOFAST() ios_base::sync_with_stdio(0); cin.tie(0);
-
-void insertionSortKSorted(vector<int> list) {
-    vector<int> vectorList = list;
-    int sizeVetor = vectorList.size();
-    int countComparisons = 0;
-
-    for (int i = 1; i < sizeVetor; i++) {
-        int key = vectorList[i];
-        int j = i - 1;
-
-    
-        while (j >= 0) {
-            countComparisons++;
-            if (vectorList[j] > key) {
-                vectorList[j + 1] = vectorList[j];
-                j--;
-            } else {
-                break;
-            }
-        }
-        vectorList[j + 1] = key;
-    }
-
-    for (int i = 0; i < sizeVetor; i++) {
-        cout << vectorList[i] << (i == sizeVetor - 1 ? "" : " ");
-    }
-    cout << "\n";
-    cout << countComparisons << "\n";
-}
 
 int main() {
     IOFAST();
 
     int n, k;
-    if (cin >> n >> k) {
-        vector<int> list(n);
-        for (int i = 0; i < n; i++) {
-            cin >> list[i];
-        }
-        insertionSortKSorted(list);
+    cin >> n >> k;
+
+    vector<int> vet(n);
+    for (int i = 0; i < n; i++) {
+        cin >> vet[i];
     }
+
+    long long comparacoes = 0;
+
+    for (int i = 1; i < n; i++) {
+        int chave = vet[i];
+        int j = i - 1;
+
+        while (j >= 0) {
+            comparacoes++;
+            if (vet[j] > chave) {
+                vet[j + 1] = vet[j];
+                j--;
+            } else {
+                break;
+            }
+        }
+        vet[j + 1] = chave;
+    }
+
+    for (int i = 0; i < n; i++) {
+        cout << vet[i] << (i == n - 1 ? "" : " ");
+    }
+    cout << "\n";
+    cout << comparacoes << "\n";
 
     return 0;
 }
