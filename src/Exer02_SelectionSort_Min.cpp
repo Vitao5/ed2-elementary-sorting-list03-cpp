@@ -1,37 +1,29 @@
 #include <iostream>
 #include <vector>
-
 using namespace std;
-
-#define IOFAST() ios_base::sync_with_stdio(0); cin.tie(0);
-
-int main() {
-    IOFAST();
-
-    int n, k;
-    cin >> n >> k;
-
-    vector<int> vet(n);
-    for (int i = 0; i < n; i++) {
-        cin >> vet[i];
-    }
-
-    for (int i = 0; i < k; i++) {
-        int minIndex = i;
-        for (int j = i + 1; j < n; j++) {
-            if (vet[j] < vet[minIndex]) {
-                minIndex = j;
+class Solution {
+public:
+    vector<int> selectionKSmallest(vector<int> nums, int k) {
+        int n = nums.size();
+        for (int i = 0; i < k; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < n; j++) {
+                if (nums[j] < nums[minIndex]) {
+                    minIndex = j;
+                }
             }
+            swap(nums[i], nums[minIndex]);
         }
-        int temp = vet[i];
-        vet[i] = vet[minIndex];
-        vet[minIndex] = temp;
+        return vector<int>(nums.begin(), nums.begin() + k);
     }
-
-    for (int i = 0; i < k; i++) {
-        cout << vet[i] << (i == k - 1 ? "" : " ");
+};
+int main() {
+    Solution sol;
+    vector<int> nums = {29, 10, 14, 37, 13, 42};
+    vector<int> resultado = sol.selectionKSmallest(nums, 3);
+    for (int i = 0; i < resultado.size(); i++) {
+        cout << resultado[i] << (i == resultado.size() - 1 ? "" : " ");
     }
     cout << "\n";
-
     return 0;
 }
